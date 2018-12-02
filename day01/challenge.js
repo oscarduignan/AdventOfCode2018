@@ -9,16 +9,16 @@ function part1() {
 }
 
 function part2() {
-  let previous = [0];
+  let previous = new Set();
   let current = 0;
 
   while (true) {
     for (var i = 0; i < changes.length; i++) {
       current = current + changes[i];
 
-      if (previous.includes(current)) return current;
+      if (previous.has(current)) return current;
 
-      previous.push(current);
+      previous.add(current);
     }
   }
 }
