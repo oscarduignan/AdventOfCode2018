@@ -66,7 +66,9 @@ case System.argv() do
           #3 @ 5,5: 2x2
           """)
 
-        assert rectangles |> find_intersecting_area() |> MapSet.size() == 4
+        assert rectangles
+               |> find_intersecting_area()
+               |> MapSet.size() == 4
       end
 
       test "Part 2" do
@@ -84,11 +86,20 @@ case System.argv() do
     end
 
   [input_file] ->
-    rectangles = input_file |> File.read!() |> Day3.parse_input()
+    rectangles =
+      input_file
+      |> File.read!()
+      |> Day3.parse_input()
 
-    intersecting_area = rectangles |> Day3.find_intersecting_area() |> MapSet.size()
+    intersecting_area =
+      rectangles
+      |> Day3.find_intersecting_area()
+      |> MapSet.size()
 
-    non_intersecting_rectangle_id = rectangles |> Day3.find_non_intersecting() |> elem(0)
+    non_intersecting_rectangle_id =
+      rectangles
+      |> Day3.find_non_intersecting()
+      |> elem(0)
 
     IO.puts("""
     Part1: #{intersecting_area}
