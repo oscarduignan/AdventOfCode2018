@@ -9,16 +9,14 @@ defmodule Day3 do
     line
     |> String.split([" ", ",", "x", ":", "@", "#"], trim: true)
     |> Enum.map(&String.to_integer/1)
-    |> line_to_tuple
+    |> calculate_coords_covered
   end
 
-  defp line_to_tuple([id, left, top, width, height]) do
-    {id,
-     Enum.reduce(Range.new(left + 1, left + width), MapSet.new(), fn x, area ->
-       Enum.reduce(Range.new(top + 1, top + height), area, fn y, area ->
-         MapSet.put(area, {x, y})
-       end)
-     end)}
+  defp calculate_coords_covered([id, left, top, width, height]) do
+    x_points = Range.new(left + 1, left + width)
+    y_points = Range.new(top + 1, top + height)
+
+    {id, MapSet.new(for x <- x_points, y <- y_points, do: {x, y})}
   end
 
   def find_intersecting_area([current_rectangle | other_rectangles]) do
