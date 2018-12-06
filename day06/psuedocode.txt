@@ -1,0 +1,74 @@
+# part 1
+
+coords = input |> split |> map({x, y})
+x_bound = (max(map(coords, x)))
+y_bound = (max(map(coords, y)))
+
+biggest_non_infinite = reduce (for x <- 0..x_boundary, y <- 0..y_boundary, do: {x, y}), %{},
+    a, non_infinite ->
+        {_, closest} = reduce coords, nil do
+            b, nil -> 
+                {distance(a, b), b}
+            b, closest ->
+                current_distance = distance(a, b)
+                closest_distance = elem(first(closest), 0)
+
+                cond
+                    closest_distance == current_distance
+                        closest |> put(1, nil)
+                    closest_distance > current_distance
+                        {current_distance, b}
+                    closest_distance < current_distance
+                        closest
+        end
+        
+        if closest != nil do 
+            if (a.x == x_boundary || a.y == y_boundary) do
+                non_infinite |> delete(closest)
+            else
+                non_infinite |> update(closest, 1, count + 1)
+            end
+        else
+            non_infinite
+        end}
+    end
+|> max_by(count)
+
+
+
+---
+
+
+
+went into
+
+
+
+        # {_, closest} =
+        #   Enum.reduce(coords, nil, fn
+        #     b, nil ->
+        #       {manhattan_distance(a, b), b}
+
+        #     b, closest ->
+        #       current_distance = manhattan_distance(a, b)
+        #       closest_distance = elem(closest, 0)
+
+        #       cond do
+        #         closest_distance == current_distance ->
+        #           closest |> put_elem(1, nil)
+
+        #         closest_distance < current_distance ->
+        #           closest
+
+        #         closest_distance > current_distance ->
+        #           {current_distance, b}
+        #       end
+        #   end)
+
+        # if closest == nil, do: acc !!!!!!!!!!! WHY OSCAR WHY - this is me forgetting I can't just have a guard clause and return early, hid from me for ages
+
+        # if x == x_min || x == x_max || y == y_min || y == y_max do
+        #   acc |> Map.delete(closest)
+        # else
+        #   acc |> Map.update(closest, 1, &(&1 + 1))
+        # end
