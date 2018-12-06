@@ -1,4 +1,4 @@
-defmodule Day4 do
+defmodule Day5 do
   @case_difference ?a - ?A
 
   def part1(input) do
@@ -45,10 +45,10 @@ case System.argv() do
   [] ->
     ExUnit.start()
 
-    defmodule Day4Test do
+    defmodule Day6Test do
       use ExUnit.Case
 
-      import Day4
+      import Day6
 
       test "the truth" do
         assert true
@@ -70,11 +70,11 @@ case System.argv() do
   [input_file] ->
     input_file
     |> File.read!()
-    |> Day4.part1()
+    |> Day5.part1()
     |> IO.inspect(label: "Part 1")
 
     input_file
     |> File.read!()
-    |> Day4.part2()
+    |> Day5.part2()
     |> IO.inspect(label: "Part 2")
 end
