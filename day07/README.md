@@ -1,3 +1,7 @@
 # Day07
 
 This broke my brain, and I looked at lots of DFS / topological search algorithms (new to me) but I couldn't translate it to the way I needed to structure things in elixir. Then sat down with this again today and managed to make it click in my head and came up with something I'm even quite happy with the structure of.
+
+---
+
+Part2: This took me a while to do, had psuedocode sitting around for a while but took me a while to come back to and then it was 3 hours or so to get that psuedocode working! I am not that used to working in typed languages but I think it would have saved me lots of time in my dev cycle here to have them, and I think because I'm not using a mix project I'm not getting as much help as I could be from vscode in terms of immediate feedback from linting the code. Probably the solution is a bit verbose but it runs quick enough for me. One thing that I miss that would need to be added is I need to curry some functions and pass them down I think rather than having to pass lots of values, for example, work_factor I'm passing all the way down the chain where as I either want to process this in the parse loop or pass in a curried function to work out the time it would take that already has work_factor in it. I don't like the fact I have to pass a . to use curried function, something from Witchcraft might help with this I think. Or I could just get over my silly visual ticks about stuff.
